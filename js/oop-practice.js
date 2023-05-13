@@ -90,12 +90,17 @@ const animal_4 = new Animal_4('Cat', '2', 'orange', 'large', 'male');
 animal_4.speak_1('Cat');
 
 // STEP 9
-const text = new String('The quick brown fox jumped over the lazy dog');
+const text = new String('The quick brown fox jumped over the lazy dog fox');
 
 String.prototype.findWords = function (word) {
   this._word = word;
-  const searchWord = (this.match(`/[${this._word}]/gi`) || []).length;
-  return searchWord;
+  console.log(word);
+  // SEARCH FOR WORD
+  const searchWord = this._word.match(/[this._word]/gi).length;
+  result = alert(
+    `The word "${word}" was found ${searchWord} times in the text: "The quick brown fox jumped over the lazy dog fox"`
+  );
+  return result;
 };
 
-console.log(text.findWords('The'));
+text.findWords('The');
