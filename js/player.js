@@ -61,21 +61,17 @@ console.log(`Your favorite album is: ${jbox.favoriteAlbum()}`);
 
 // REBUILD THE OPTION FROM SCRATCH
 let option = document.createElement('option');
+let collection = jbox.albums;
+
+console.log(collection);
 // LOOP THROUGH ALBUMS OBJECT ON LOAD
 window.addEventListener('load', (e) => {
-  // let str = '';
-  for (const a in jbox.albums) {
-    // console.log(this.jbox.albums[a]);
-    // str += a.toString() + '\n';
-    option.innerHTML +=
-      `
-     <option>${a}: ${this.jbox.albums[a].artist} ${this.jbox.albums[a].title}
-     </option>
-    ` + '\n';
+  for (const al in collection) {
+    return (option.innerHTML += `
+    Album: ${jbox.albums[al].title} - Artist: ${jbox.albums[al].artist}
+    `);
   }
-  // console.log(str);
-
-  // return str;
 });
+
 // BIND OPTION TO THE SELECT
 albumList.appendChild(option);
