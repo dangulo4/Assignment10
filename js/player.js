@@ -4,6 +4,8 @@ const $ = (id) => {
 };
 // GET DOM ELEMENTS
 albumList = $('albumNames');
+favAlbum = $('favoriteAlbum');
+playBtn = $('playBtn');
 
 class Jukebox {
   constructor(albums) {
@@ -40,7 +42,7 @@ class Album {
   };
 }
 
-var jbox = new Jukebox();
+let jbox = new Jukebox();
 const album1 = new Album('Operation Ivy', 'Energy');
 const album2 = new Album('Blink 182', 'Dude Ranch');
 const album3 = new Album('New Found Glory', 'Sticks and Stones');
@@ -49,20 +51,26 @@ jbox.addAlbum(album1);
 jbox.addAlbum(album2);
 jbox.addAlbum(album3);
 
-album1.play();
-album2.play();
-album2.play();
-album2.play();
-album2.play();
-album2.play();
-album3.play();
+// album1.play();
+// album2.play();
+// album2.play();
+// album2.play();
+// album2.play();
+// album2.play();
+// album3.play();
 
 console.log(`Your favorite album is: ${jbox.favoriteAlbum()}`);
 
+// for (const album in collection) {
+//   album.addAlbum(album);
+// }
+
 // REBUILD THE OPTION FROM SCRATCH
 let option = document.createElement('option');
-let collection = jbox.albums;
+let fav = document.createElement('p');
 
+let collection = jbox.albums;
+fav.innerHTML = `${jbox.favoriteAlbum()}`;
 console.log(collection);
 // LOOP THROUGH ALBUMS OBJECT ON LOAD
 window.addEventListener('load', (e) => {
@@ -71,7 +79,13 @@ window.addEventListener('load', (e) => {
     Album: ${jbox.albums[al].title} - Artist: ${jbox.albums[al].artist}
     `);
   }
+  // ADD EVENT LISTENER TO PLAY BUTTON
+  playBtn.addEventListener('click', () => {
+    albumListValue = albumList.value;
+    fav.innerHTML = `${jbox.favoriteAlbum()}`;
+  });
 });
 
 // BIND OPTION TO THE SELECT
 albumList.appendChild(option);
+favAlbum.appendChild(fav);
